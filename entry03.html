@@ -54,6 +54,33 @@ SYSTEM OVERLOAD DETECTED
 </div>
 
 </div>
+<script>
+let t = parseInt(localStorage.getItem("t") || "0");
+t++;
+localStorage.setItem("t", t);
 
+// Base corruption effects
+window.onload = function() {
+
+    if (t > 2) {
+        document.body.style.filter = "contrast(1.1) brightness(0.95)";
+    }
+
+    if (t > 4) {
+        document.body.style.filter = "contrast(1.2) brightness(0.9) hue-rotate(5deg)";
+    }
+
+    if (t > 6) {
+        document.body.style.filter = "contrast(1.3) brightness(0.8) hue-rotate(15deg)";
+    }
+
+    if (t > 8) {
+        document.body.innerHTML += `
+        <div style="color:#ff3b3b; position:fixed; bottom:10px; left:10px; font-family:monospace;">
+            SYSTEM CORRUPTION SPREADING
+        </div>`;
+    }
+};
+</script>
 </body>
 </html>

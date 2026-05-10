@@ -12,45 +12,26 @@ body {
 }
 
 .container {
+    padding:40px;
     max-width:900px;
     margin:auto;
-    padding:40px;
 }
 
 .glitch {
     color:#ff3b3b;
-    letter-spacing:2px;
+    animation: shake 0.2s infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(0,0); }
+    50% { transform: translate(1px,-1px); }
+    100% { transform: translate(0,0); }
 }
 
 .box {
     border:1px solid #2a2f36;
     padding:20px;
     margin-top:20px;
-    background:#0f141b;
-}
-
-.red {
-    color:#ff4d4d;
-}
-
-.warn {
-    color:#ffcc00;
-}
-
-.hidden {
-    color:#070a0f;
-}
-
-.shake {
-    animation: shake 0.2s infinite;
-}
-
-@keyframes shake {
-    0% { transform: translate(0px,0px); }
-    25% { transform: translate(1px,-1px); }
-    50% { transform: translate(-1px,1px); }
-    75% { transform: translate(1px,1px); }
-    100% { transform: translate(0px,0px); }
 }
 </style>
 
@@ -58,53 +39,19 @@ body {
 
 <body>
 
-<div class="container shake">
+<div class="container">
 
-    <h1 class="glitch">ENTRY 03 // FULL HEAT</h1>
+<h1 class="glitch">ENTRY 03 // FULL HEAT</h1>
 
-    <div class="box">
-        <p class="warn">WARNING: THERMAL OVERLOAD EVENT DETECTED</p>
+<div class="box">
+SYSTEM OVERLOAD DETECTED
+</div>
 
-        <p>SUBJECT STATE: UNSTABLE</p>
-        <p>MEMORY COHERENCE: COLLAPSING</p>
-        <p>ANCHOR LINKS: FAILING</p>
-    </div>
-
-    <div class="box">
-        <p class="red">SYSTEM LOG:</p>
-
-        <p>
-            “Heat threshold exceeded during memory recall sequence.”
-        </p>
-
-        <p>
-            “Identity fragmentation accelerating.”
-        </p>
-
-        <p>
-            “Subject no longer maintains stable persona state.”
-        </p>
-    </div>
-
-    <div class="box">
-        <p class="warn">VISUAL FEED INTERRUPTION:</p>
-
-        <p class="red">
-            █████ SIGNAL LOSS █████
-        </p>
-
-        <p class="hidden">
-            ash.trace.override://north_active_but_unstable
-        </p>
-    </div>
-
-    <div class="box">
-        <p class="red">VOICE OVERLAP DETECTED:</p>
-
-        <p>“—don’t leave me—”</p>
-        <p>“—I remember—no I don’t—”</p>
-        <p>“—who am I—”</p>
-    </div>
+<div class="box">
+> memory fragmentation accelerating  
+> anchor links failing  
+> identity collapse imminent
+</div>
 
 </div>
 

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLITCH ARCHIVE NODE</title>
+
+<style>
+
+body {
+    margin:0;
+    background:#090c11;
+    color:#cfd3d8;
+    font-family: monospace;
+    overflow:hidden;
+}
+
+/* SCANLINES */
+
+.scanlines {
+    position:fixed;
+    width:100%;
+    height:100%;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.03) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    pointer-events:none;
+    z-index:10;
+}
+
+/* TERMINAL WINDOW */
+
+.terminal {
+    width:900px;
+    max-width:90%;
+    margin:60px auto;
+    border:1px solid #2a2f36;
+    background:#0b0f14;
+    box-shadow:0 0 30px rgba(0,0,0,0.6);
+}
+
+/* TOP BAR */
+
+.topbar {
+    background:#11161d;
+    padding:12px;
+    border-bottom:1px solid #2a2f36;
+    color:#8a8f98;
+}
+
+/* CONTENT */
+
+.content {
+    padding:30px;
+}
+
+.glitch {
+    color:#ff3b3b;
+    letter-spacing:3px;
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.status {
+    color:#8a8f98;
+    margin-bottom:30px;
+}
+
+/* BUTTONS */
+
+.node {
+    display:block;
+    width:100%;
+    margin-top:15px;
+    padding:18px;
+    border:1px solid #2a2f36;
+    background:#0f141b;
+    color:#cfd3d8;
+    text-decoration:none;
+    transition:0.2s;
+}
+
+.node:hover {
+    border-color:#ff3b3b;
+    background:#141b24;
+}
+
+.locked {
+    opacity:0.35;
+    cursor:not-allowed;
+}
+
+/* FOOTER */
+
+.footer {
+    margin-top:40px;
+    color:#666;
+    font-size:13px;
+}
+
+/* FLICKER */
+
+.flicker {
+    animation:flicker 4s infinite;
+}
+
+@keyframes flicker {
+    0% { opacity:1; }
+    48% { opacity:1; }
+    49% { opacity:0.7; }
+    50% { opacity:0.4; }
+    51% { opacity:1; }
+    100% { opacity:1; }
+}
+
+/* HIDDEN ARG TEXT */
+
+.hidden {
+    color:#0b0f14;
+    user-select:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="scanlines"></div>
+
+<div class="terminal flicker">
+
+    <div class="topbar">
+        GLITCH_ARCHIVE_RECOVERY_NODE_v1.7
+    </div>
+
+    <div class="content">
+
+        <div class="glitch">
+            GLITCH ARCHIVE NODE
+        </div>
+
+        <div class="status">
+            SYSTEM STATUS: PARTIALLY CORRUPTED<br>
+            MEMORY CONTINUITY FAILURE DETECTED<br>
+            EXTERNAL ANCHOR NODES: ACTIVE
+        </div>
+
+        <a class="node" href="entry01.html">
+            ENTRY 01 // SECURITY FEED
+        </a>
+
+        <a class="node" href="entry02.html">
+            ENTRY 02 // RECONSTRUCTION
+        </a>
+
+        <a class="node" href="entry03.html">
+            ENTRY 03 // FULL HEAT
+        </a>
+
+        <div class="node locked">
+            ENTRY 00 // LOCKED
+        </div>
+
+        <div class="footer">
+            “SYSTEM MEMORY NOT STABLE WITHOUT EXTERNAL NODES”
+        </div>
+
+        <!-- HIDDEN ARG CLUE -->
+        <div class="hidden">
+            TRACE://N-V-UZI/ANCHOR_STATUS=STABLE
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

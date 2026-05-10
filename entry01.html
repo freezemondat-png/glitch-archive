@@ -2,7 +2,35 @@
 <html>
 <head>
 <title>ENTRY 01 // SECURITY FEED</title>
+from TTS.api import TTS
 
+# Load a high-quality multi-speaker model
+tts = TTS(model_name="tts_models/en/vctk/vits", progress_bar=False)
+
+# Different "character-style" voice presets (NOT real people, just styles)
+voices = {
+    "calm_ai": "p225",       # neutral calm synthetic voice
+    "cold_drone": "p234",    # slightly harsher tone
+    "soft_entity": "p239",   # quieter, more fragile tone
+}
+
+def speak(text, voice_key="calm_ai", file_name="output.wav"):
+    speaker = voices.get(voice_key, "p225")
+
+    tts.tts_to_file(
+        text=text,
+        speaker=speaker,
+        file_path=file_name
+    )
+
+    print(f"Generated: {file_name} using {voice_key}")
+
+# EXAMPLES (you can swap text freely)
+speak("System node active. No external interference detected.", "calm_ai", "node_ai.wav")
+
+speak("Warning. Unknown entity presence confirmed.", "cold_drone", "warning_drone.wav")
+
+speak("...I am still here. Do not disconnect me.", "soft_entity", "entity_whisper.wav")
 <style>
 body {
     background:#0b0f14;

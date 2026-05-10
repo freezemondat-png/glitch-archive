@@ -5,57 +5,52 @@
 
 <style>
 body {
-    margin:0;
     background:#0b0f14;
     color:#cfd3d8;
-    font-family: monospace;
+    font-family:monospace;
 }
 
-.container {
-    padding:40px;
-    max-width:900px;
-    margin:auto;
-}
-
-.glitch {
-    color:#ff3b3b;
-}
-
-.image-box {
-    border:1px solid #2a2f36;
+.feed {
     position:relative;
+    border:1px solid #2a2f36;
 }
 
-.footage {
+img {
     width:100%;
-    filter: grayscale(1) contrast(1.4) brightness(0.7);
+    filter: grayscale(1) contrast(1.5) brightness(0.7);
 }
 
 .overlay {
     position:absolute;
-    bottom:10px;
-    left:10px;
-    font-size:12px;
+    font-size:11px;
     color:#ffcc00;
+    opacity:0.7;
 }
-</style>
 
+.top { top:10px; left:10px; }
+.bottom { bottom:10px; left:10px; }
+</style>
 </head>
 
 <body>
 
-<div class="container">
+<h2>SEC_FEED://07:13:ΔΔ</h2>
 
-<h1 class="glitch">ENTRY 01 // SECURITY FEED</h1>
+<div class="feed">
 
-<div class="image-box" id="footage-slot">
+    <div class="overlay top">SIGNAL UNSTABLE</div>
 
-    <!-- 🟥 IMAGE GOES HERE AFTER LIMIT RESET -->
-    <p style="padding:20px;">LOADING CORRUPTED FEED...</p>
+    <img src="frame01.png">
+
+    <div class="overlay bottom">VISUAL DATA CORRUPTED</div>
 
 </div>
 
-</div>
+<script>
+let t = localStorage.getItem("corruption") || 0;
+t++;
+localStorage.setItem("corruption", t);
+</script>
 
 </body>
 </html>

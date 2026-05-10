@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LIVE FEED // NODE-01</title>
+<style>
+    body {
+        margin: 0;
+        background: #05070a;
+        color: #c9d1d9;
+        font-family: monospace;
+        overflow: hidden;
+    }
+
+    #feed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: radial-gradient(circle at center, #0b0f14, #020304);
+        overflow: hidden;
+    }
+
+    #overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        mix-blend-mode: screen;
+    }
+
+    .scanline {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: rgba(255, 0, 60, 0.08);
+        animation: scan 4s linear infinite;
+    }
+
+    @keyframes scan {
+        0% { top: 0%; }
+        100% { top: 100%; }
+    }
+
+    #log {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        font-size: 12px;
+        opacity: 0.8;
+        max-width: 400px;
+    }
+
+    #warning {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: crimson;
+        font-weight: bold;
+        letter-spacing: 2px;
+        animation: flicker 1.2s infinite;
+    }
+
+    @keyframes flicker {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+    }
+
+    #entity {
+        position: absolute;
+        width: 120px;
+        height: 220px;
+        background: linear-gradient(180deg, #1a1f27, #05070a);
+        border: 1px solid rgba(255,0,60,0.2);
+        border-radius: 10px;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 30px rgba(255,0,60,0.1);
+    }
+
+    #entity::before {
+        content: "N0RTH // DISASSEMBLY UNIT";
+        position: absolute;
+        top: -20px;
+        left: 0;
+        font-size: 10px;
+        color: rgba(255,255,255,0.6);
+    }
+
+    #glitch {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+            0deg,
+            rgba(255,0,60,0.03),
+            rgba(255,0,60,0.03) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+        animation: glitchMove 0.4s infinite;
+    }
+
+    @keyframes glitchMove {
+        0% { transform: translate(0,0); }
+        25% { transform: translate(2px,-2px); }
+        50% { transform: translate(-2px,2px); }
+        75% { transform: translate(1px,1px); }
+        100% { transform: translate(0,0); }
+    }
+
+</style>
+</head>
+<body>
+
+<div id="feed">
+    <div id="entity"></div>
+    <div id="glitch"></div>
+</div>
+
+<div id="overlay">
+    <div class="scanline"></div>
+</div>
+
+<div id="warning">/// LIVE CORRUPTED FEED DETECTED ///</div>
+<div id="log"></div>
+
+<script>
+const entity = document.getElementById("entity");
+const log = document.getElementById("log");
+
+let corruption = 0;
+
+const logs = [
+"camera sync unstable...",
+"biometric mismatch detected",
+"unit N0RTH movement anomaly",
+"hood integrity: compromised",
+"visor output dimming",
+"memory fragmentation increasing",
+"unknown signal interfering",
+"live feed latency increasing"
+];
+
+function addLog() {
+    const msg = logs[Math.floor(Math.random() * logs.length)];
+    const div = document.createElement("div");
+    div.textContent = "> " + msg;
+    log.appendChild(div);
+
+    if (log.children.length > 8) {
+        log.removeChild(log.children[0]);
+    }
+}
+
+setInterval(addLog, 1200);
+
+// cursor reaction
+window.addEventListener("mousemove", (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+    entity.style.left = e.clientX + x + "px";
+    entity.style.top = e.clientY + y + "px";
+});
+
+// corruption pulse
+setInterval(() => {
+    corruption += 1;
+    if (corruption > 100) corruption = 0;
+
+    document.getElementById("glitch").style.opacity = Math.random();
+
+    if (corruption % 10 === 0) {
+        document.body.style.filter = "hue-rotate(" + corruption + "deg)";
+    }
+}, 200);
+
+// fake entity breathing effect
+setInterval(() => {
+    const scale = 1 + Math.sin(Date.now() / 500) * 0.03;
+    entity.style.transform = `translate(-50%, -50%) scale(${scale})`;
+}, 50);
+
+</script>
+
+</body>
+</html>

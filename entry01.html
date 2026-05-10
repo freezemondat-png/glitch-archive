@@ -36,7 +36,125 @@ img {
 
 <h2>SEC_FEED://07:13:ΔΔ</h2>
 
-<div class="feed">
+<div class="feed"> <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Live Feed Overlay Scene</title>
+<style>
+  body {
+    margin: 0;
+    background: black;
+    overflow: hidden;
+  }
+
+  video, canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }
+
+  canvas {
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<video id="video" autoplay playsinline></video>
+<canvas id="overlay"></canvas>
+
+<script>
+const video = document.getElementById("video");
+const canvas = document.getElementById("overlay");
+const ctx = canvas.getContext("2d");
+
+// Resize canvas to screen
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+// Start webcam
+navigator.mediaDevices.getUserMedia({ video: true })
+  .then(stream => {
+    video.srcObject = stream;
+  })
+  .catch(err => {
+    console.error("Camera error:", err);
+  });
+
+// Draw scene
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // --- COLLAPSED PILLAR ---
+  ctx.fillStyle = "#2b2b2b";
+
+  // main pillar chunk
+  ctx.fillRect(canvas.width * 0.55, canvas.height * 0.2, 120, canvas.height * 0.7);
+
+  // rubble base
+  ctx.beginPath();
+  ctx.moveTo(canvas.width * 0.5, canvas.height * 0.9);
+  ctx.lineTo(canvas.width * 0.7, canvas.height * 0.8);
+  ctx.lineTo(canvas.width * 0.75, canvas.height * 0.95);
+  ctx.lineTo(canvas.width * 0.52, canvas.height * 0.98);
+  ctx.closePath();
+  ctx.fill();
+
+  // --- SILHOUETTE DRONE (hidden partly behind pillar) ---
+  ctx.fillStyle = "black";
+
+  const x = canvas.width * 0.58;
+  const y = canvas.height * 0.55;
+
+  // head
+  ctx.beginPath();
+  ctx.arc(x, y - 120, 30, 0, Math.PI * 2);
+  ctx.fill();
+
+  // torso
+  ctx.fillRect(x - 20, y - 90, 40, 90);
+
+  // arms (slightly angular "drone-like")
+  ctx.beginPath();
+  ctx.moveTo(x - 20, y - 70);
+  ctx.lineTo(x - 70, y - 20);
+  ctx.lineTo(x - 60, y);
+  ctx.lineTo(x - 10, y - 50);
+  ctx.closePath();
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(x + 20, y - 70);
+  ctx.lineTo(x + 70, y - 20);
+  ctx.lineTo(x + 60, y);
+  ctx.lineTo(x + 10, y - 50);
+  ctx.closePath();
+  ctx.fill();
+
+  // legs
+  ctx.fillRect(x - 18, y, 15, 80);
+  ctx.fillRect(x + 3, y, 15, 80);
+
+  // --- “embedded illusion” (fade behind pillar) ---
+  ctx.fillStyle = "#2b2b2b";
+  ctx.fillRect(canvas.width * 0.55, 0, 120, canvas.height); // pillar overlay front layer
+
+  requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+
+</body>
+</html>
 
     <div class="overlay top">SIGNAL UNSTABLE</div>
 

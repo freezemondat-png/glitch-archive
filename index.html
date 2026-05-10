@@ -85,3 +85,18 @@ body {
 </html> <a href="entry00.html" style="opacity:0.02; position:absolute; bottom:5px; right:5px;">
 00
 </a>
+<script>
+let loadCount = localStorage.getItem("loadCount") || 0;
+loadCount++;
+localStorage.setItem("loadCount", loadCount);
+
+window.onload = function() {
+    if (loadCount > 3) {
+        document.body.style.filter = "contrast(1.2) hue-rotate(10deg)";
+    }
+
+    if (loadCount > 5) {
+        document.body.innerHTML += "<p style='color:red;'>SYSTEM CORRUPTION SPREADING</p>";
+    }
+}
+</script>

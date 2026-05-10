@@ -58,7 +58,21 @@ body {
         <p>IDENTITY: UNRESOLVED</p>
         <p>VISUAL DATA: CORRUPTED</p>
     </div>
+<div class="image-box glitch-feed">
 
+    <div class="timestamp">
+        SEC_FEED://07:13:ΔΔ // SIGNAL UNSTABLE
+    </div>
+
+    <img src="frame01.png" class="footage">
+
+    <div class="overlay-text">
+        SIGNAL DEGRADED<br>
+        VISUAL DATA CORRUPTED<br>
+        ENTITY CLASS: UNKNOWN
+    </div>
+
+</div>
     <div class="box">
         <p>SYSTEM NOTES:</p>
         <p>• VISUAL CONFIDENCE: LOW</p>
@@ -71,35 +85,5 @@ body {
         </p>
     </div>
 
-</div> 
-
-</body>
-</html>
-.glitch-feed {
-    position: relative;
-    border: 1px solid #2a2f36;
-    overflow: hidden;
-}
-
-.footage {
-    width: 100%;
-    filter: grayscale(1) contrast(1.4) brightness(0.7);
-    animation: flicker 3s infinite;
-}
-
-@keyframes flicker {
-    0% { opacity:1; }
-    49% { opacity:0.9; }
-    50% { opacity:0.6; }
-    51% { opacity:1; }
-    100% { opacity:1; }
-}
-
-.overlay-text {
-    position:absolute;
-    bottom:10px;
-    left:10px;
-    font-size:12px;
-    color:#ffcc00;
     opacity:0.8;
 }

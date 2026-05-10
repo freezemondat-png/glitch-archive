@@ -4,6 +4,45 @@
 <title>ENTRY 00 // ORIGIN SHARD</title>
 
 <style>
+  <div id="systemVoice"></div>
+
+<script>
+const systemLines = [
+"ARCHIVE NODE ONLINE.",
+"OBSERVATION CONTINUING.",
+"SUBJECT TRACE INCOMPLETE.",
+"MEMORY FRAGMENTS UNSTABLE.",
+"DO NOT ATTEMPT FULL RECONSTRUCTION.",
+"BEAM EVENT STILL ACTIVE IN DATA LAYER.",
+"NORTH DESIGNATION CONFIRMED.",
+"YOU ARE NOT AUTHORIZED TO ACCESS THIS LEVEL."
+];
+
+function speakSystem() {
+    let msg = systemLines[Math.floor(Math.random() * systemLines.length)];
+
+    let el = document.createElement("div");
+    el.innerText = msg;
+
+    el.style.position = "fixed";
+    el.style.top = "10px";
+    el.style.left = "10px";
+    el.style.fontSize = "11px";
+    el.style.opacity = "0.6";
+    el.style.color = "#ff3b3b";
+    el.style.fontFamily = "monospace";
+    el.style.zIndex = "9999";
+
+    document.body.appendChild(el);
+
+    setTimeout(() => {
+        el.style.opacity = "0";
+        setTimeout(() => el.remove(), 1000);
+    }, 4000);
+}
+
+setInterval(speakSystem, 8000);
+</script>  
 body {
     margin:0;
     background:#05070a;

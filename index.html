@@ -100,3 +100,17 @@ window.onload = function() {
     }
 }
 </script>
+<div id="ai">
+</div>
+
+<script>
+let messages = [
+"OBSERVATION CONTINUING",
+"SUBJECT MEMORY INSTABILITY INCREASING",
+"ASH VECTOR DETECTED OUTSIDE PARAMETERS",
+"DO NOT TRUST RECONSTRUCTION DATA"
+];
+
+document.getElementById("ai").innerHTML =
+messages[Math.floor(Math.random()*messages.length)];
+</script>

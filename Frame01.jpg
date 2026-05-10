@@ -1,5 +1,9 @@
 <div class="image-box">
-    <img src="frame01.png" style=" .glitch-flicker {
+    <img src="frame01.png" style="
+    width:100%;
+    border:1px solid #2a2f36;
+    filter: grayscale(1) contrast(1.3) brightness(0.7);
+"> .glitch-flicker {
     animation: flicker 2.8s infinite;
 }
 
